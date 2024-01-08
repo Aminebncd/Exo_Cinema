@@ -12,31 +12,7 @@ class Realisateur extends Personne{
         $this->films = [];
     }
 
-    // ex : $michaelMann = new Realisateur("Mann", "Michael");
-
-    // public function getNom()
-    // {
-    //     return $this->nom;
-    // }
-
-    // public function setNom($nom)
-    // {
-    //     $this->nom = $nom;
-
-    //     return $this;
-    // }
-
-    // public function getPrenom()
-    // {
-    //     return $this->prenom;
-    // }
-
-    // public function setPrenom($prenom)
-    // {
-    //     $this->prenom = $prenom;
-
-    //     return $this;
-    // }
+    
 
     public function getFilms(): array
     {
@@ -64,10 +40,5 @@ class Realisateur extends Personne{
     
         $result .= "</ul>";
         return $result;
-    }
-
-
-    public function __toString(){
-        return $this->getPrenom()." ".$this->getNom();
     }
 }

@@ -6,9 +6,9 @@ class Film {
     private string $titre;
     private DateTime $dateSortie;
     private int $duree; 
-    // private Acteur $acteur;
     public Genre $genre;
     private Realisateur $realisateur;
+    private array $casting;
 
 
     public function __construct(string $titre, int $anneeParution, int $duree, Genre $genre,  Realisateur $realisateur){
@@ -17,9 +17,10 @@ class Film {
         $this->duree = $duree;
         $this->genre = $genre;
         $this->realisateur = $realisateur;
-        // $this->acteur = $acteur;
+        $this->casting = [];
         $realisateur->addFilm($this); 
         $genre->addFilm($this);
+        // $casting->addActeur($this);
         // $acteur->addFilm($this); 
     }
 
@@ -69,21 +70,10 @@ class Film {
     public function setGenre($genre)
     {
         $this->genre = $genre;
-
+        
         return $this;
     }
-    // public function getActeur()
-    // {
-    //     return $this->acteur;
-    // }
-
-    //  public function setActeur($acteur)
-    // {
-    //     $this->acteur = $acteur;
-
-    //     return $this;
-    // }
-    
+ 
     public function getRealisateur(): Realisateur
     {
         return $this->realisateur;
@@ -92,19 +82,50 @@ class Film {
     public function setRealisateur(Realisateur $realisateur)
     {
         $this->realisateur = $realisateur;
+        
+        return $this;
+    }
+
+
+   public function getCasting(): array
+    {
+        return $this->casting;
+    }
+
+    public function setCasting($casting)
+    {
+        $this->casting = $casting;
 
         return $this;
     }
 
+    public function addCasting(Casting $casting)
+    {
+        $this->casting[] = $casting;
+    }
+
+    public function castFilm(){
+        $result = "<h2>Casting de $this</h2>";
+
+        foreach ($this->casting as $casting){
+            $result .= "<b>".$casting->getActeur()."</b>"." (dans le role de ".$casting->getRole().")<br>";
+        }
+
+        return $result;
+    }
+    
    
-    public function getInfos(): string {
+    public function getInfos(): string 
+    {
         return $this . ": " . $this->getGenre()." / ".$this->getRealisateur()."<br>";
     }
     
    
-    public function __toString(){
+    public function __toString()
+    {
         return $this->getTitre()." ( ".$this->getDateSortie()->format('Y')." - ".$this->getduree()."min )";   
     }
+
 
 
 

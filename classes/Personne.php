@@ -67,7 +67,7 @@ class Personne {
     // }
 
 
-    // public function __toString(){
-    //     return $this->getPrenom()." ".$this->getNom();
-    // }
+    public function __toString(){
+        return $this->getPrenom()." ".$this->getNom();
+    }
 }

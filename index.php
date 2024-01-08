@@ -29,18 +29,22 @@ Lister la filmographie d'un réalisateur (quels sont les films qu'a réalisé ce
 
 <?php
 
-spl_autoload_register(function ($class_name) {
+spl_autoload_register(function ($class_name) 
+{
     require "classes/".$class_name . '.php';
 });
 
 
-$policier = new Genre("policier");
+
+
+$policier = new Genre("Policier");
 $drame = new Genre("Drame");
 $gangster = new Genre("Gangster");
 $thriller = new Genre("Thriller");
 
 
 $michaelMann = new Realisateur("Mann", "Michael");
+
 $film1 = new Film("Heat", 1995, 171, $policier, $michaelMann);
 $film2 = new Film("Miami Vice : Deux Flics à Miami", 2006, 132, $policier, $michaelMann);
 $film3 = new Film("Ennemis Publics", 2009, 134, $drame, $michaelMann);
@@ -49,9 +53,10 @@ $film4 = new Film("Ali", 2001, 157, $drame, $michaelMann);
 
 
 $martinScorcese = new Realisateur("Scorcese", "Martin");
-$film1 = new Film("Les Affranchis", 1990, 146, $gangster, $martinScorcese);
-$film2 = new Film("Casino", 1995, 178, $drame, $martinScorcese);
-$film3 = new Film("Shutter Island", 2010, 130, $thriller, $martinScorcese);
+
+$film5 = new Film("Les Affranchis", 1990, 146, $gangster, $martinScorcese);
+$film6 = new Film("Casino", 1995, 178, $drame, $martinScorcese);
+$film7 = new Film("Shutter Island", 2010, 130, $thriller, $martinScorcese);
 
 
 
@@ -68,3 +73,25 @@ echo $martinScorcese->infosReal();
 
 echo $policier->infosGenre();
 echo $drame->infosGenre();
+
+
+$acteur1 = new Acteur("De Niro", "Robert");
+$acteur2 = new Acteur("kilmer", "Val");
+$acteur3 = new Acteur("Pacino", "Al");
+
+$role1 = new Role("Neil McCauley");
+$role2 = new Role("Lieutenant Vincent Hanna");
+$role3 = new Role("Chris Shiherlis");
+$role4 = new Role("Sam 'Ace' Rothstein");
+// $film1 = new Film("Heat", 1995, 171, $policier, $michaelMann);
+
+$cast1 = new Casting($acteur1, $role1, $film1);
+$cast2 = new Casting($acteur2, $role3, $film1);
+$cast3 = new Casting($acteur3, $role2, $film1);
+
+$cast4 = new Casting($acteur1, $role4, $film7);
+
+echo $film1->castFilm();
+echo $role1->castRole();
+echo $acteur1->castActeur();
+
