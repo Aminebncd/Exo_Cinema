@@ -62,6 +62,14 @@ class Film {
         return $this;
     }
 
+    public function convertToHoursMins($duree) {
+        if ($duree < 1) {
+            return;
+        }
+
+        return date('H:i', mktime(0, $duree, 0, 0, 0, 0));
+    }
+
     public function getGenre()
     {
         return $this->genre;
@@ -123,7 +131,7 @@ class Film {
    
     public function __toString()
     {
-        return $this->getTitre()." ( ".$this->getDateSortie()->format('Y')." - ".$this->getduree()."min )";   
+        return $this->getTitre()." ( ".$this->getDateSortie()->format('Y')." - ".$this->convertToHoursMins($this->duree)." )";   
     }
 
 

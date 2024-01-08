@@ -34,8 +34,19 @@ spl_autoload_register(function ($class_name)
     require "classes/".$class_name . '.php';
 });
 
+// test de formatage d'heure
+// function convertToHoursMins($time, $format = '%02d:%02d') {
+//     if ($time < 1) {
+//         return;
+//     }
+//     $hours = floor($time / 60);
+//     $minutes = ($time % 60);
+//     return sprintf($format, $hours, $minutes);
+// }
+// echo convertToHoursMins(120, '%02dh%02d'); 
 
-
+// $minutes = 120;
+// echo $formattedTime = date('H:i', mktime(0, $minutes, 0, 0, 0, 0));
 
 $policier = new Genre("Policier");
 $drame = new Genre("Drame");
