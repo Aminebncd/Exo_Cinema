@@ -66,7 +66,7 @@ class Film {
         if ($duree < 1) {
             return;
         }
-
+        
         return date('H:i', mktime(0, $duree, 0, 0, 0, 0));
     }
 
