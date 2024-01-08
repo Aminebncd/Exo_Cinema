@@ -26,3 +26,45 @@ Lister la filmographie d'un réalisateur (quels sont les films qu'a réalisé ce
 
 <h2>RESULTAT :</h2>
 
+
+<?php
+
+spl_autoload_register(function ($class_name) {
+    require "classes/".$class_name . '.php';
+});
+
+
+$policier = new Genre("policier");
+$drame = new Genre("Drame");
+$gangster = new Genre("Gangster");
+$thriller = new Genre("Thriller");
+
+
+$michaelMann = new Realisateur("Mann", "Michael");
+$film1 = new Film("Heat", 1995, 171, $policier, $michaelMann);
+$film2 = new Film("Miami Vice : Deux Flics à Miami", 2006, 132, $policier, $michaelMann);
+$film3 = new Film("Ennemis Publics", 2009, 134, $drame, $michaelMann);
+$film4 = new Film("Ali", 2001, 157, $drame, $michaelMann);
+
+
+
+$martinScorcese = new Realisateur("Scorcese", "Martin");
+$film1 = new Film("Les Affranchis", 1990, 146, $gangster, $martinScorcese);
+$film2 = new Film("Casino", 1995, 178, $drame, $martinScorcese);
+$film3 = new Film("Shutter Island", 2010, 130, $thriller, $martinScorcese);
+
+
+
+// echo  $film1->getInfos();
+// echo  $film2->getInfos();
+// echo  $film3->getInfos();
+// echo  $film4->getInfos();
+
+
+echo $michaelMann->infosReal();
+echo $martinScorcese->infosReal();
+
+
+
+echo $policier->infosGenre();
+echo $drame->infosGenre();
